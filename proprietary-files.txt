@@ -440,9 +440,9 @@ vendor/firmware/CAMERA_ICP.elf
 -vendor/bin/hvdcp_opti
 
 # CNE
--vendor/app/CneApp/CneApp.apk
--vendor/app/IWlanService/IWlanService.apk
--vendor/bin/cnd
+vendor/app/CneApp/CneApp.apk;REQUIRED=CneApp.libvndfwk_detect_jni.qti_symlink
+vendor/app/IWlanService/IWlanService.apk
+vendor/bin/cnd
 vendor/etc/init/cnd.rc
 -vendor/lib64/libcne.so
 -vendor/lib64/libcneapiclient.so

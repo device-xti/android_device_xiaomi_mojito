@@ -424,6 +424,10 @@ PRODUCT_PACKAGES += \
     libvndfwk_detect_jni.qti \
     libvndfwk_detect_jni.qti.vendor
 
+# QTI fwk-detect
+PRODUCT_PACKAGES += \
+    libvndfwk_detect_jni.qti.vendor # Needed by CNE app
+    
 # Ramdisk
 PRODUCT_PACKAGES += \
     init.qcom.early_boot.sh \
