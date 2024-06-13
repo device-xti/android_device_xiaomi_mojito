@@ -368,7 +368,8 @@ PRODUCT_COPY_FILES += \
 
 # Netd
 PRODUCT_PACKAGES += \
-    android.system.net.netd@1.1.vendor
+    android.system.net.netd@1.1.vendor \
+    libnetutils.vendor
 
 # Neural Networks
 PRODUCT_PACKAGES += \
@@ -443,7 +444,8 @@ PRODUCT_PACKAGES += \
     libjson \
     libril \
     librilutils \
-    librmnetctl
+    librmnetctl \
+    libsqlite.vendor
 
 PRODUCT_PACKAGES += \
     android.hardware.radio@1.4.vendor \
