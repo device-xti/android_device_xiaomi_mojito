@@ -441,8 +441,6 @@ PRODUCT_PACKAGES += \
 # RIL
 PRODUCT_PACKAGES += \
     libjson \
-    libril \
-    librilutils \
     librmnetctl \
     libsqlite.vendor
 
