@@ -205,9 +205,8 @@ PRODUCT_SYSTEM_PROPERTIES += \
     debug.cpurend.vsync=false
 
 PRODUCT_PACKAGES += \
+    hwcomposer.qcom \
     gralloc.default \
-    gralloc.sm6150 \
-    hwcomposer.sm6150 \
     memtrack.sm6150
 
 PRODUCT_PACKAGES += \
