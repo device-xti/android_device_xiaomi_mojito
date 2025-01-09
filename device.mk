@@ -206,7 +206,7 @@ PRODUCT_SYSTEM_PROPERTIES += \
 
 PRODUCT_PACKAGES += \
     hwcomposer.qcom \
-    gralloc.default \
+    gralloc.qcom \
     memtrack.sm6150
 
 PRODUCT_PACKAGES += \
