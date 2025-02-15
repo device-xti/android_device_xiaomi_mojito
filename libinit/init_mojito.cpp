@@ -23,15 +23,15 @@
 #include <sys/sysinfo.h>
 
 using android::base::GetProperty;
+using std::string;
 
-void property_override(char const prop[], char const value[], bool add = true) {
-    prop_info* pi;
+void property_override(string prop, string value) {
+    auto pi = (prop_info*) __system_property_find(prop.c_str());
 
-    pi = (prop_info*)__system_property_find(prop);
-    if (pi)
-        __system_property_update(pi, value, strlen(value));
-    else if (add)
-        __system_property_add(prop, strlen(prop), value, strlen(value));
+    if (pi != nullptr)
+        __system_property_update(pi, value.c_str(), value.size());
+    else
+        __system_property_add(prop.c_str(), prop.size(), value.c_str(), value.size());
 }
 
 void load_dalvikvm_props() {
@@ -57,27 +57,39 @@ void load_dalvikvm_props() {
 }
 
 void load_vendor_props() {
-    std::string hwname = GetProperty("ro.boot.hwname", "");
+    string device, fingerprint, model, name;
+
+    string hwname = GetProperty("ro.boot.hwname", "");
     if (hwname.find("sunny") != std::string::npos) {
-        property_override("ro.product.device", "sunny");
-        property_override("ro.product.name", "sunny");
-        property_override("ro.build.fingerprint", "Redmi/sunny_global/sunny:12/RKQ1.210614.002/V14.0.8.0.SKGMIXM:user/release-keys");
-        property_override("ro.vendor.build.fingerprint", "Redmi/sunny_global/sunny:12/RKQ1.210614.002/V14.0.8.0.SKGMIXM:user/release-keys");
-        property_override("ro.bootimage.build.fingerprint", "Redmi/sunny_global/sunny:12/RKQ1.210614.002/V14.0.8.0.SKGMIXM:user/release-keys");
-        property_override("ro.build.description", "sunny_global-user 12 SKQ1.210908.001 V14.0.8.0.SKGMIXM release-keys");
+        device = "sunny";
+        fingerprint = "Redmi/sunny_global/sunny:12/RKQ1.210614.002/V14.0.9.0.SKGMIXM:user/release-keys";
+        model = "M2101K7AG";
+        name = "sunny_global";
     } else {
-        property_override("ro.product.device", "mojito");
-        property_override("ro.product.name", "mojito");
-        property_override("ro.build.fingerprint", "Redmi/mojito/mojito:12/RKQ1.210614.002/V14.0.8.0.SKGMIXM:user/release-keys");
-        property_override("ro.vendor.build.fingerprint", "Redmi/mojito/mojito:12/RKQ1.210614.002/V14.0.8.0.SKGMIXM:user/release-keys");
-        property_override("ro.bootimage.build.fingerprint", "Redmi/mojito/mojito:12/RKQ1.210614.002/V14.0.8.0.SKGMIXM:user/release-keys");
-        property_override("ro.build.description", "mojito-user 12 SKQ1.210908.001 V14.0.8.0.SKGMIXM release-keys");
+        device = "mojito";
+        fingerprint = "Redmi/mojito/mojito:12/RKQ1.210614.002/V14.0.9.0.SKGMIXM:user/release-keys";
+        model = "Redmi Note 10";
+        name = "mojito";
+    }
+
+    string prop_partitions[] = { "", "odm.", "product.", "system.",
+					"system_ext.", "vendor.", "vendor_dlkm." };
+
+    for (const string &prop : prop_partitions) {
+        property_override(string("ro.product.") + prop + string("device"), device);
+        property_override(string("ro.") + prop + string("build.fingerprint"), fingerprint);
+        property_override(string("ro.product.") + prop + string("model"), model);
+        property_override(string("ro.product.") + prop + string("name"), name);
+    }
+
+    if (hwname.find("sunny") != std::string::npos) {
+        property_override("ro.build.description", "sunny_global-user 12 RKQ1.210614.002 V14.0.9.0.SKGMIXM release-keys");
+    } else {
+        property_override("ro.build.description", "mojito-user 12 RKQ1.210614.002 V14.0.9.0.SKGMIXM release-keys");
     }
 
     property_override("bluetooth.device.default_name", "Redmi Note 10");
-    property_override("ro.product.brand", "Redmi");
-    property_override("ro.product.manufacturer", "Xiaomi");
-    property_override("ro.product.model", "Redmi Note 10");
+    property_override("vendor.usb.product_string", "Redmi Note 10");
 }
 
 void vendor_load_properties() {
