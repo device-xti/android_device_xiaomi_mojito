@@ -437,8 +437,7 @@ PRODUCT_COPY_FILES += \
 
 # Shims
 PRODUCT_PACKAGES += \
-    libpiex_shim \
-    libwatermark_shim
+    libpiex_shim
 
 # Shipping API level
 PRODUCT_SHIPPING_API_LEVEL := 30
