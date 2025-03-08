@@ -14,11 +14,19 @@ $(call inherit-product, device/xiaomi/mojito/device.mk)
 # Inherit some common Lineage stuff.
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
+# RisingOS XTI
+TARGET_ENABLE_BLUR := true
+RISING_MAINTAINER= Yuta
+TARGET_HAS_UDFPS := false
+WITH_GMS := false
+
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    RISING_CHIPSET="Qualcomm Snapdragon 678" \
+    RISING_MAINTAINER="Yuta"
+
 # Boot Animation Resolution
 TARGET_BOOT_ANIMATION_RES := 1080
-TARGET_INCLUDE_PIXEL_CHARGER := true
 TARGET_SUPPORTS_QUICK_TAP := true
-
 TARGET_USES_AOSP_RECOVERY := true
 
 PRODUCT_NAME := lineage_mojito
