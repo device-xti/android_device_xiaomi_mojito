@@ -31,3 +31,9 @@ ril.subscription.types=NV,RUIM
 ro.telephony.default_cdma_sub=0
 ro.telephony.default_network=22,20
 telephony.lteOnCdmaDevice=1
+
+# Spark
+ro.spark.device.name=Mojito
+ro.spark.group.url=https://t.me/yuta2101
+ro.spark.maintainer=Yuta
+ro.spark.maintainer.username=Yuta

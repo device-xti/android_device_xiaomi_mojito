@@ -5,9 +5,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_mojito.mk
+    $(LOCAL_DIR)/spark_mojito.mk
 
 COMMON_LUNCH_CHOICES := \
-    lineage_mojito-user \
-    lineage_mojito-userdebug \
-    lineage_mojito-eng
+    spark_mojito-user \
+    spark_mojito-userdebug \
+    spark_mojito-eng

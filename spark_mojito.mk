@@ -11,25 +11,20 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit from mojito device
 $(call inherit-product, device/xiaomi/mojito/device.mk)
 
-# Inherit some common Lineage stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+# Inherit some common Spark stuff.
+$(call inherit-product, vendor/spark/config/common_full_phone.mk)
 
 # RisingOS XTI
 TARGET_ENABLE_BLUR := true
-RISING_MAINTAINER= Yuta
 TARGET_HAS_UDFPS := false
 WITH_GMS := false
-
-PRODUCT_BUILD_PROP_OVERRIDES += \
-    RISING_CHIPSET="Qualcomm Snapdragon 678" \
-    RISING_MAINTAINER="Yuta"
 
 # Boot Animation Resolution
 TARGET_BOOT_ANIMATION_RES := 1080
 TARGET_SUPPORTS_QUICK_TAP := true
 TARGET_USES_AOSP_RECOVERY := true
 
-PRODUCT_NAME := lineage_mojito
+PRODUCT_NAME := spark_mojito
 PRODUCT_DEVICE := mojito
 PRODUCT_BRAND := Redmi
 PRODUCT_MODEL := Redmi Note 10
