@@ -417,6 +417,10 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <!-- Bluetooth Audio HAL -->
         <xi:include href="/vendor/etc/bluetooth_audio_policy_configuration.xml"/>
 
+        <!-- Audio voice -->
+        <module name="primary input" type="AUDIO_DEVICE_IN_BUILTIN_MIC" />
+        <module name="voice_recognition" type="AUDIO_DEVICE_IN_VOICE_RECOGNITION" />
+
     </modules>
     <!-- End of Modules section -->
 
