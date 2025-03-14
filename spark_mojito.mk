@@ -15,7 +15,7 @@ $(call inherit-product, device/xiaomi/mojito/device.mk)
 $(call inherit-product, vendor/spark/config/common_full_phone.mk)
 
 # RisingOS XTI
-TARGET_ENABLE_BLUR := true
+TARGET_USES_BLUR := true
 TARGET_HAS_UDFPS := false
 WITH_GMS := false
 
